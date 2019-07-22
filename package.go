@@ -1,7 +1,6 @@
 package vectopsdeferf64
 
 import (
-	"fmt"
 	fs "github.com/CaptainDyce/f64supp"
 	is "github.com/CaptainDyce/intsupp"
 )
@@ -19,7 +18,7 @@ func (s VectOp) build(op func([]float64)) VectOp {
 	return VectOp{&s, op}
 }
 
-var root VectOp = VectOp{nil, nil}
+var root = VectOp{nil, nil}
 
 ///////////////////////////
 // bootstrap...
@@ -77,12 +76,6 @@ func (s VectOp) SetMaskv(v1 []float64, p is.Predicate) VectOp {
 	return s.build(func(v []float64) {
 		fs.SetMaskv(v, v1, p)
 	})
-}
-
-func accept(v []float64, v1 []float64) {
-	if len(v1) < len(v) {
-		panic(fmt.Sprintf("invalid array size %d (out of bounds for %d-element vector)", len(v1), len(v)))
-	}
 }
 
 /////////////////
