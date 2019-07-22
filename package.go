@@ -365,6 +365,7 @@ func (s VectOp) Expl(value float64) VectOp {
 // Terminals
 /////////////////
 
+// applies the complete operation chain to v
 func (s VectOp) On(v []float64) []float64 {
 	if s.prev != nil {
 		s.prev.On(v)
@@ -373,17 +374,20 @@ func (s VectOp) On(v []float64) []float64 {
 	return v
 }
 
+// applies the complete operation chain to a new [size] array
 func (s VectOp) OnSize(size int) []float64 {
 	v := make([]float64, size)
 	return s.On(v)
 }
 
+// applies the complete operation chain to a new [size] <value>-filled array
 func (s VectOp) OnConst(value float64, size int) []float64 {
 	v := make([]float64, size)
 	fs.Setl(v, value)
 	return s.On(v)
 }
 
+// applies the complete operation chain to a new [size] identity array
 func (s VectOp) OnIdent(size int) []float64 {
 	v := make([]float64, size)
 	fs.Ident(v)
