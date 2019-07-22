@@ -1,4 +1,4 @@
-package vectopsf64
+package vectopsdeferf64
 
 import (
 	"fmt"
