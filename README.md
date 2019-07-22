@@ -15,7 +15,7 @@ import (
 func main() {
 	// defining the following operation:
 	// identity vector, divide each entry by 2*pi, apply math.Sin, and reverse the vector
-	op := v.Ident().Divl(2 * math.Pi).ApplyOp(math.Sin).Rev()
+	op := v.Op().Ident().Divl(2 * math.Pi).ApplyOp(math.Sin).Rev()
 	a := op.OnSize(100) // apply it on a new [100]float64
 	fmt.Println(a)
 
